@@ -15,19 +15,13 @@ function SignupPage() {
     const handleFormSubmit = async (ev: React.FormEvent<HTMLFormElement>) => {
         ev.preventDefault();
         setCreatingUser(true);
-        setError(false);
         setUserCreated(false);
         const response = await axiosInstance.post('/signup', {
             email,
             password
         });
-        if (response.data) {
-            setUserCreated(true);
-        }
-        else {
-            setError(true);
-        }
         setCreatingUser(false);
+        setUserCreated(true);
     }
     return (
         <section className="mt-8">
